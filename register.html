@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - BookBuddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        body {
+            height: 100vh;
+            background: linear-gradient(to right, #43cea2, #185a9d);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        nav {
+            background-color: #1a2d6c;
+            width: 100%;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            animation: slideDown 0.8s ease forwards;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #aadcff;
+            user-select: none;
+            animation: glow 2.5s ease-in-out infinite alternate;
+        }
+        
+        nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav .nav-links a {
+            color: #aadcff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 1.2s ease forwards;
+        }
+        
+        nav .nav-links a:hover,
+        nav .nav-links a:focus {
+            background-color: #ffd460;
+            color: #1a2d6c;
+            outline: none;
+            box-shadow: 0 0 8px #ffd460aa;
+            transform: scale(1.1);
+        }
+        
+        .register-box {
+            background: white;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation: pop 0.5s ease-in-out forwards;
+            margin: 40px 0 60px;
+            color: #185a9d;
+        }
+        
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .register-box h2 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 25px;
+            font-weight: 600;
+            animation: glow 2.5s ease-in-out infinite alternate;
+        }
+        
+        form {
+            position: relative;
+        }
+        
+        .input-group {
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .input-group input:focus {
+            border-color: #43cea2;
+            outline: none;
+            box-shadow: 0 0 8px #43cea2aa;
+        }
+        
+        .input-group .icon {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            color: #185a9d;
+            font-size: 18px;
+            pointer-events: none;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .register-box button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 0.6s;
+        }
+        
+        .register-box button:hover {
+            background-color: #1472c4;
+            transform: scale(1.05);
+        }
+        
+        .register-box .link-btn {
+            background: none;
+            border: none;
+            color: #185a9d;
+            margin-top: 12px;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            display: block;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+        
+        #registerResult {
+            text-align: center;
+            margin-top: 10px;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .success {
+            color: green;
+        }
+        
+        .error {
+            color: red;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #43cea2, 0 0 10px #43cea2;
+            }
+            100% {
+                text-shadow: 0 0 20px #185a9d, 0 0 30px #185a9d;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">BookBuddy</div>
+        <div class="nav-links">
+            <a href="mainshelf.html">Main Shelf</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="register-box">
+        <h2>Register to BookBuddy</h2>
+        <form id="registerForm">
+            <div class="input-group">
+                <i class="fas fa-user icon"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope icon"></i>
+                <input type="email" id="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock icon"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required />
+            </div>
+            <button type="submit">Register</button>
+        </form>
+
+        <form action="login.html">
+            <button class="link-btn">Already have an account? Login</button>
+        </form>
+
+        <div id="registerResult"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#registerForm").on("submit", function(e) {
+            e.preventDefault();
+            let username = $("#username").val();
+            let email = $("#email").val();
+            let password = $("#password").val();
+
+            $.ajax({
+                url: "register.php",
+                type: "POST",
+                data: {
+                    username,
+                    email,
+                    password
+                },
+                success: function(response) {
+                    $("#registerResult").html("<p class='success'>Registration successful! Redirecting...</p>");
+                    setTimeout(() => {
+                        window.location.href = "login.html";
+                    }, 1500);
+                },
+                error: function() {
+                    $("#registerResult").html("<p class='error'>Something went wrong during registration.</p>");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

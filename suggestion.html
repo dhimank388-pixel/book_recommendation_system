@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Suggestion | BookBuddy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        nav {
+            background-color: #1a2d6c;
+            width: 100%;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.8s ease forwards;
+        }
+        
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #aadcff;
+            user-select: none;
+            animation: glow 2.5s ease-in-out infinite alternate;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            margin-top: 40px;
+            animation: fadeInUp 1.5s ease forwards;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+            animation: fadeIn 1.2s ease forwards;
+        }
+        
+        input[type="text"],
+        textarea,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #555;
+            animation: fadeIn 1.4s ease forwards;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 1.6s ease forwards;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">BookBuddy</div>
+    </nav>
+
+    <div class="container">
+        <h2>Suggest a Book</h2>
+        <form id="suggestionForm">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title" required />
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required />
+
+            <label for="suggestion">Your Suggestion:</label>
+            <textarea id="suggestion" name="suggestion" rows="4" required></textarea>
+
+            <button type="submit">Submit Suggestion</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // For demo, just alert and redirect back to home.html
+            alert('Thank you for your suggestion!');
+
+            window.location.href = 'home.html';
+        });
+    </script>
+</body>
+
+</html>

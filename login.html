@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Login | Book Recommendation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('p.jpeg') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #f0f4ff;
+        }
+        
+        nav {
+            background-color: #1a2d6c;
+            width: 100%;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #aadcff;
+            user-select: none;
+        }
+        
+        nav .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        nav .nav-links a {
+            color: #aadcff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        nav .nav-links a:hover,
+        nav .nav-links a:focus {
+            background-color: #ffd460;
+            color: #1a2d6c;
+            outline: none;
+            box-shadow: 0 0 8px #ffd460aa;
+        }
+        
+        .register-btn-nav {
+            background-color: #28a745;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .register-btn-nav:hover {
+            background-color: #218838;
+            color: #fff;
+        }
+        
+        .background {
+            background-color: rgba(31, 60, 136, 0.75);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 450px;
+            width: 90%;
+            margin: 80px auto 40px;
+            animation: fadeInUp 1.2s ease forwards;
+        }
+        
+        .login-card {
+            background-color: white;
+            padding: 30px 35px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: #1a2d6c;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h2 {
+            font-size: 28px;
+            color: #007BFF;
+        }
+        
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .input-group .icon {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            color: #007BFF;
+            font-size: 18px;
+            pointer-events: none;
+        }
+        
+        .input-group input {
+            width: 100%;
+            height: 36px;
+            padding: 6px 12px 6px 40px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 8px #007BFFaa;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        
+        .forgot-password a {
+            font-size: 13px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        #loginResult {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">BookBuddy</div>
+        <div class="nav-links">
+            <a href="bookland.html">Book Home</a>
+            <a href="mainshelf.html">Main Shelf</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="register.html">Register</a>
+        </div>
+    </nav>
+
+    <div class="background">
+        <div class="login-card">
+            <div class="logo">
+                <img src="book-logo.png" alt="Logo" />
+                <h2>BookBuddy</h2>
+            </div>
+            <h3 class="title">Login to Your Account</h3>
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" name="email" placeholder="Email" required />
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" name="password" placeholder="Password" required />
+                </div>
+
+                <div class="forgot-password">
+                    <a href="forget.html">Forgot Password?</a>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <div id="loginResult"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch("login.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    const resultBox = document.getElementById("loginResult");
+                    if (data.status === "success") {
+                        resultBox.innerHTML = '<div class="success">Login successfully...</div>';
+                        setTimeout(() => {
+                            window.location.href = "home.html";
+                        }, 1500);
+                    } else {
+                        resultBox.innerHTML = '<div class="error">' + data.message + '</div>';
+                    }
+                });
+        });
+    </script>
+    <script>
+        // Show logout success message if ?logout=success is in URL
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('logout') === 'success') {
+                const resultBox = document.getElementById('loginResult');
+                resultBox.innerHTML = '<div class="success">Logout successfully.</div>';
+            }
+        });
+    </script>
+</body>
+
+</html>

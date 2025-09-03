@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookBuddy - Home</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #1f3c88;
+            color: #f0f4ff;
+        }
+        
+        nav {
+            background: #1a2d6c;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.8s ease forwards;
+        }
+        
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #aadcff;
+            user-select: none;
+            animation: glow 2.5s ease-in-out infinite alternate;
+        }
+        
+        nav .nav-links a {
+            color: #aadcff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 1.2s ease forwards;
+        }
+        
+        nav .nav-links a:hover {
+            color: #ffd460;
+            background-color: #1a2d6c;
+            box-shadow: 0 0 8px #ffd460aa;
+            transform: scale(1.1);
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 15px 40px;
+            animation: fadeInUp 1.5s ease forwards;
+        }
+        
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 0.5rem;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        p.intro {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.2s ease forwards;
+        }
+        
+        p.tagline {
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            color: #c0d4ff;
+            animation: fadeIn 1.4s ease forwards;
+        }
+        /* Featured categories */
+        
+        .categories {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.6s ease forwards;
+        }
+        
+        .category {
+            background: #284a99;
+            flex: 1 0 28%;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 212, 96, 0.7);
+        }
+        
+        .category img {
+            max-width: 60px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .category:hover img {
+            transform: scale(1.1);
+        }
+        
+        .category h3 {
+            margin: 0;
+            font-weight: 700;
+            color: #fff8c4;
+            font-size: 1.2rem;
+        }
+        /* Books */
+        
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 18px;
+            animation: fadeInUp 1.8s ease forwards;
+        }
+        
+        .book-card {
+            background: #284a99;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .book-card:hover {
+            transform: scale(1.06);
+            box-shadow: 0 10px 20px rgba(255, 212, 96, 0.7);
+        }
+        
+        .book-card img {
+            width: 100%;
+            height: 205px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .book-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .book-card .title {
+            padding: 10px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1rem;
+            color: #e1e8ff;
+        }
+        /* Testimonials */
+        
+        .testimonials {
+            background: #1a2d6c;
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin-top: 50px;
+            color: #cbdcff;
+            animation: fadeInUp 2s ease forwards;
+        }
+        
+        .testimonials h2 {
+            margin-top: 0;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffdb6f;
+            text-shadow: 0 0 6px #ffc107cc;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        .testimonial-item {
+            max-width: 700px;
+            margin: 20px auto 15px;
+            font-style: italic;
+            font-size: 1.1rem;
+            animation: fadeIn 2.2s ease forwards;
+        }
+        
+        .testimonial-item::before {
+            content: "“";
+            font-size: 3rem;
+            color: #ffc100cc;
+            vertical-align: top;
+            margin-right: 8px;
+        }
+        
+        .testimonial-author {
+            margin-top: 6px;
+            font-weight: 700;
+            font-style: normal;
+            color: #ffe88c;
+            text-align: right;
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            color: #8facd1;
+            padding: 20px 15px;
+            border-top: 1px solid #2e4fab;
+            font-size: 0.9rem;
+            animation: fadeIn 2.5s ease forwards;
+        }
+        /* Responsive */
+        
+        @media (max-width: 650px) {
+            .categories {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .category {
+                flex: 1 0 100%;
+            }
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #ffd460, 0 0 10px #ffd460;
+            }
+            100% {
+                text-shadow: 0 0 20px #ffd460, 0 0 30px #ffd460;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">BookBuddy</div>
+        <div class="nav-links">
+            <a href="bookland.html">Book Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.html">Contact  Us</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+    <main>
+        <h1>Welcome to BookBuddy</h1>
+        <p class="intro">Hi, I'm Khushi. Explore our handpicked selection of computer science and programming books to help you master your skills and knowledge!</p>
+        <p class="tagline">Your ultimate companion in the world of coding and technology books.</p>
+
+        <section class="categories" aria-label="Book categories">
+            <a class="category" href="https://github.com/topics/data-structures" target="_blank" aria-label="Data Structures Books">
+                <img src="uploads/data.png" alt="Data Structures icon" />
+                <h3>Data Structures</h3>
+            </a>
+            <a class="category" href="https://www.w3schools.com/db/default.asp" target="_blank" aria-label="Database Books">
+                <img src="uploads/base.png" alt="Database icon" />
+                <h3>Databases</h3>
+            </a>
+            <div class="category" tabindex="0" aria-label="Programming Books">
+                <img src="uploads/prog.png" alt="Programming icon" />
+                <h3>Programming</h3>
+            </div>
+            <div class="category" tabindex="0" aria-label="Algorithms Books">
+                <img src="uploads/ago.jpeg" alt="Algorithm icon" />
+                <h3>Algorithms</h3>
+            </div>
+            <div class="category" tabindex="0" aria-label="AI & Machine Learning Books">
+                <img src="uploads/aii.png" alt="AI icon" />
+                <h3>AI & Machine Learning</h3>
+            </div>
+        </section>
+
+        <section class="book-list" aria-label="Featured books">
+            <article class="book-card" tabindex="0">
+
+                <img src="uploads/clean.png" alt="Clean Code book cover" />
+                <div class="title">Clean Code</div>
+            </article>
+            <article class="book-card" tabindex="0">
+                <img src="uploads/algori.png" alt="Introduction to Algorithms book cover" />
+                <div class="title">Introduction to Algorithms</div>
+            </article>
+            <article class="book-card" tabindex="0">
+                <img src="uploads/ppp.jpeg" alt="The Pragmatic Programmer book cover" />
+                <div class="title">The Pragmatic Programmer</div>
+            </article>
+            <article class="book-card" tabindex="0">
+                <img src="uploads/js.png" alt="JavaScript: The Good Parts book cover" />
+                <div class="title">JavaScript: The Good Parts</div>
+            </article>
+        </section>
+
+        <section class="testimonials" aria-label="User testimonials">
+            <h2>What Our Readers Say</h2>
+            <div class="testimonial-item" tabindex="0">
+                This site helped me discover some amazing programming books I hadn't heard of before!
+                <div class="testimonial-author">- Ayesha M.</div>
+            </div>
+            <div class="testimonial-item" tabindex="0">
+                The handpicked selections are exactly what I needed to elevate my coding skills.
+                <div class="testimonial-author">- Rohit S.</div>
+            </div>
+        </section>
+    </main>
+    <footer>&copy; 2024 BookBuddy by Khushi. All rights reserved.</footer>
+</body>
+
+</html>
